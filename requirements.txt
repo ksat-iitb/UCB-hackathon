@@ -1,0 +1,9 @@
+langgraph
+tenacity
+requests
+playwright==1.49.1
+termcolor
+python-dotenv
+python-Levenshtein
+httpx
+chromadb
