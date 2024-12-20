@@ -115,7 +115,8 @@ def generate_tree_string(a11y_tree, indent_level=0):
             if element['role']=='li':
                 element['role']='presentation'
 
-            tree_string += f"{indent}Role: {element['role']}, Name: {element['name'].replace('\n','')}\n"
+            name = element['name'].replace('\n','')
+            tree_string += f"{indent}Role: {element['role']}, Name: {name}\n"
             # tree_string += f"{indent}Role: {element['role']}, Name: {element['name']}, Visible: {element['visible']}, BoundingBox: {element['boundingBox']}\n"
 
             # Recursively generate tree string for child elements

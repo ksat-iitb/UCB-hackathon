@@ -180,7 +180,7 @@ class WebSearchAgent(BaseAgent):
             state['messages'].pop() # Remove the last message for modification
             last_message=state['messages'][-1]
             if isinstance(last_message,ImageMessage):
-                state['messages'][-1]=HumanMessage(f'<Observation>{state.get('previous_observation')}</Observation>')
+                state['messages'][-1]=HumanMessage(f"<Observation>{state.get('previous_observation')}</Observation>")
             await page.wait_for_load_state('domcontentloaded')
             await page.evaluate(self.js_script)
             cordinates=await page.evaluate('mark_page()')
@@ -203,7 +203,7 @@ class WebSearchAgent(BaseAgent):
             state['messages'].pop() # Remove the last message for modification
             last_message=state['messages'][-1]
             if isinstance(last_message,HumanMessage):
-                state['messages'][-1]=HumanMessage(f'<Observation>{state.get('previous_observation')}</Observation>')
+                state['messages'][-1]=HumanMessage(f"<Observation>{state.get('previous_observation')}</Observation>")
             # snapshot=await page.accessibility.snapshot(interesting_only=True)
             # print(snapshot)
             ally_tree, bboxes =await ally_tree_with_cordinates(page)
@@ -225,7 +225,7 @@ class WebSearchAgent(BaseAgent):
             state['messages'].pop() # Remove the last message for modification
             last_message=state['messages'][-1]
             if isinstance(last_message,ImageMessage):
-                state['messages'][-1]=HumanMessage(f'<Observation>{state.get('previous_observation')}</Observation>')
+                state['messages'][-1]=HumanMessage(f"<Observation>{state.get('previous_observation')}</Observation>")
             # snapshot=await page.accessibility.snapshot(interesting_only=True)
             # print(json.dumps(snapshot,indent=2))
             ally_tree, bboxes =await ally_tree_with_cordinates(page)
@@ -242,7 +242,7 @@ class WebSearchAgent(BaseAgent):
             print(colored(f'Final Answer: {final_answer}',color='cyan',attrs=['bold']))
         if self.memory:
             date_time=datetime.now().strftime()
-            self.knowledge_base.add_memory(f'Query: {state.get('input')}\nAnswer: {final_answer}\nDateTime:{date_time}')
+            self.knowledge_base.add_memory(f"Query: {state.get('input')}\nAnswer: {final_answer}\nDateTime:{date_time}")
             if self.verbose:
                 print(colored(f'Added to knowledge base.',color='green',attrs=['bold']))
         return {**state,'output':final_answer}
